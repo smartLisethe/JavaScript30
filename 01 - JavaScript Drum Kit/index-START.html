@@ -58,9 +58,25 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+    (function() {
+      "use strict";
+
+      function removeTransition(e) {
+        e.target.classList.remove('playing');
+      }
+
+      function playAnimation(e) {
+        let key_code;
+        if (e.type === 'keydown') key_code = e.keyCode;
+        const key = document.querySelector('.key[data-key="' + key_code + '"]'); // Selects the attribute data-key that matches the keyCode the user pressed and below adds the class of name playing 
+        key.classList.add('playing');
+        const keys = document.querySelectorAll('.key'); // Selects all elements with class name .key and below applys an event listener of transitioned type to remove the class of name .playing 
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+      }
+      window.addEventListener('keydown', playAnimation);
+    })()
 
 </script>
-
 
 </body>
 </html>
