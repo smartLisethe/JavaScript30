@@ -21,6 +21,7 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+  /* Selects the root element of the document. <html> in the case of HTML*/
   :root {
     --base: #ffc600;
     --spacing: 50px;
@@ -29,7 +30,7 @@
   img {
     padding: var(--spacing);
     background: var(--base);
-    filter: blur(var(--blur));
+    filter: blur(var(--blur)); 
   }
   .hl  {
     color: var(--base);
@@ -60,7 +61,7 @@
 
     function handleUpdate() {
       const suffix = this.dataset.sizing || ''; // retrieves all data-attributes of that element; 
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix); // documentElement returns the element that is root element of the document. For example: <html> element 
     }
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
